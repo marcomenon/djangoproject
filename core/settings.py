@@ -168,4 +168,5 @@ ACCOUNT_EMAIL_REQUIRED = str_to_bool(os.getenv("ACCOUNT_EMAIL_REQUIRED", "false"
 ACCOUNT_USERNAME_REQUIRED = str_to_bool(os.getenv("ACCOUNT_USERNAME_REQUIRED", "true"))
 
 # Modello personalizzato per l'utente
+ACCOUNT_EMAIL_MODEL = "accounts.EmailAddress"
 AUTH_USER_MODEL = "accounts.CustomUser"
