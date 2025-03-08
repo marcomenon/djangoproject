@@ -58,7 +58,7 @@ INSTALLED_APPS = [
 # Middleware del progetto
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'core.middlewares.MaintenanceMiddleware',
+    'core.middlewares.maintenance.MaintenanceMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
