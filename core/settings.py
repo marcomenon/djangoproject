@@ -94,15 +94,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Configurazione del database
 DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": os.getenv("DB_NAME", "djangodb"),
         "USER": os.getenv("DB_USER", "djangouser"),
         "PASSWORD": os.getenv("DB_PASS", "djangopassword"),
         "HOST": os.getenv("DB_HOST", "localhost"),
-        "PORT": int(os.getenv("DB_PORT", "3306")),
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+        "PORT": int(os.getenv("DB_PORT", "5432")),
     }
 }
 
@@ -168,5 +165,4 @@ ACCOUNT_EMAIL_REQUIRED = str_to_bool(os.getenv("ACCOUNT_EMAIL_REQUIRED", "false"
 ACCOUNT_USERNAME_REQUIRED = str_to_bool(os.getenv("ACCOUNT_USERNAME_REQUIRED", "true"))
 
 # Modello personalizzato per l'utente
-ACCOUNT_EMAIL_MODEL = "accounts.EmailAddress"
 AUTH_USER_MODEL = "accounts.CustomUser"
