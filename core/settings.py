@@ -2,6 +2,7 @@ import os
 import mimetypes
 from pathlib import Path
 from dotenv import load_dotenv
+from django.db.backends.postgresql.psycopg_any import IsolationLevel
 
 # Aggiunge il MIME type per i file JavaScript
 mimetypes.add_type("application/javascript", ".js", True)
@@ -95,11 +96,17 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME", "djangodb"),
-        "USER": os.getenv("DB_USER", "djangouser"),
-        "PASSWORD": os.getenv("DB_PASS", "djangopassword"),
+        "NAME": os.getenv("DB_NAME", "postgres_djangoproject"),
+        "USER": os.getenv("DB_USER", "user_djangoproject"),
+        "PASSWORD": os.getenv("DB_PASS", "password_djangoproject"),
         "HOST": os.getenv("DB_HOST", "localhost"),
         "PORT": int(os.getenv("DB_PORT", "5432")),
+        "OPTIONS": {
+            "client_encoding": "UTF8",
+            "isolation_level": IsolationLevel.READ_COMMITTED,  # Mantiene coerenza nei dati
+            "server_side_binding": True,  # Migliora le prestazioni con Psycopg3
+            "assume_role": os.getenv("DB_APPR", "approle_djangoproject"),  # Se hai un ruolo specifico per le connessioni
+        },
     }
 }
 
