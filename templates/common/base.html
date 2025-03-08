@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Base Template{% endblock %}</title>
+    
+    {# Block per eventuali meta, link o script extra da includere nell'header #}
+    {% block head_extra %}{% endblock %}
+    
+    {# Caricamento dei CSS di base #}
+    <link rel="stylesheet" href="{% static 'common/css/styles.css' %}">
+    
+    {# Block per aggiungere ulteriori stili (inline o link a file CSS extra) #}
+    {% block css_extra %}{% endblock %}
+  </head>
+  <body>
+    {# Block principale del contenuto della pagina #}
+    {% block content %}{% endblock %}
+    
+    {# Caricamento dei JavaScript di base #}
+    <script src="{% static 'common/js/alpine.js' %}" defer></script>
+    <script src="{% static 'common/js/htmx.js' %}"></script>
+    
+    {# Block per aggiungere script extra da eseguire in fondo alla pagina #}
+    {% block js_extra %}{% endblock %}
+    
+    {# Block per includere eventuali modali o markup extra, se necessario #}
+    {% block extra_body %}{% endblock %}
+  </body>
+</html>
