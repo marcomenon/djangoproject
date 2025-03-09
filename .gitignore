@@ -6,7 +6,8 @@ dist/
 wheels/
 *.egg-info
 db.sqlite3
-staticfiles/
+static/*
+!static/.gitkeep
 media/*
 !media/.gitkeep
 .env

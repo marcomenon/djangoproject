@@ -123,8 +123,8 @@ USE_TZ = True
 
 # Configurazione dei file statici e media
 STATIC_URL = '/static/'
-STATIC_ROOT = Path(os.getenv("STATIC_ROOT", str(BASE_DIR / "staticfiles")))
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = Path(os.getenv("STATIC_ROOT", str(BASE_DIR / "static")))
+STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path(os.getenv("MEDIA_ROOT", str(BASE_DIR / "media")))
 
@@ -132,10 +132,10 @@ MEDIA_ROOT = Path(os.getenv("MEDIA_ROOT", str(BASE_DIR / "media")))
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": f"redis://{os.getenv('REDIS_HOST', 'redis')}:{os.getenv('REDIS_PORT', '6379')}/1",
         "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
     }
 }
 
