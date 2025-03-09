@@ -6,12 +6,13 @@ dist/
 wheels/
 *.egg-info
 db.sqlite3
-static/*
-!static/.gitkeep
+staticfiles/*
+!staticfiles/.gitkeep
 media/*
 !media/.gitkeep
 .env
-migrations/*
-!migrations/__init__.py
+**/migrations/*
+!**/migrations/
+!**/migrations/__init__.py
 # Virtual environments
 .venv
