@@ -103,9 +103,6 @@ DATABASES = {
         "PORT": int(os.getenv("DB_PORT", "5432")),
         "OPTIONS": {
             "client_encoding": "UTF8",
-            "isolation_level": IsolationLevel.READ_COMMITTED,  # Mantiene coerenza nei dati
-            "server_side_binding": True,  # Migliora le prestazioni con Psycopg3
-            "assume_role": os.getenv("DB_APPR", "approle_djangoproject"),  # Se hai un ruolo specifico per le connessioni
         },
     }
 }
